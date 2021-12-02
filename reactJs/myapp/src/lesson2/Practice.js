@@ -1,3 +1,4 @@
+import './practice.css';
 import { useState, useEffect } from 'react';
 
 export const Practice = () => {
@@ -42,7 +43,7 @@ export const Practice = () => {
     }, [messageList]);
 
     return (
-        <div>
+        <div className="form">
             <form onSubmit={onSubmitMessage}>
             <input type="text" onChange={onChangeMessageInput} value={value} placeholder="Cообщение"></input>
            <button type="submit">Отправить</button>
