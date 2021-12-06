@@ -1,8 +1,9 @@
 import './App.css';
-import { Practice } from './lesson2/Practice';
-import Message from './Message';
+import { MessageList } from './components/MessageList';
+import Message from './components/Message';
+import Navigation from './components/Navigation';
 
-const textMessage = 'Моё второе задание на курсе React';
+const textMessage = 'Моё третье задание на курсе React';
 
 function App() {
   return (
@@ -10,8 +11,9 @@ function App() {
       <header className="App-header">
         <Message name={textMessage}></Message>
       </header>
+      <Navigation></Navigation>
       <main>
-        <Practice></Practice>
+        <MessageList></MessageList>
       </main>
     </div>
   );
