@@ -1,19 +1,25 @@
 import './App.css';
-import { Practice } from './lesson2/Practice';
-import Message from './Message';
+import { Routes, Route } from 'react-router-dom';
+import Home from './routes/Home';
+import Profile from './routes/Profile';
+import Chats from './routes/chats/Chats';
+import Header from './components/header/Header';
 
-const textMessage = 'Моё второе задание на курсе React';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Message name={textMessage}></Message>
-      </header>
-      <main>
-        <Practice></Practice>
-      </main>
-    </div>
+        <div className="wrap">
+          <Header></Header>
+           <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="profile" element={<Profile/>} />
+              <Route path="chats/*" element={<Chats/>} />
+              <Route path="*" element={"NotFound"}/>
+        </Routes>
+        </div>
+      </div>
   );
 }
 
