@@ -1,14 +1,14 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrap {
+  width: 80%;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #3b5995;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
