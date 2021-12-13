@@ -57,9 +57,9 @@ const MessageList = () => {
         inputRef.current.focus()
     });
 
-    if (!CHATS.find(({ id }) => id === chatId)) {
-        return navigate(-1);
-   }
+   // if (!CHATS.find(({ id }) => id === chatId)) {
+    //    return navigate(-1);
+  // }
 
     return (
         <>  
