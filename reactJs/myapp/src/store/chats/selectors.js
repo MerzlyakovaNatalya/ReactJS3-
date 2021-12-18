@@ -1,4 +1,4 @@
-const compareById = (targetId) => (item) => item.id === targetId
+const compareById = (chatId) => (chats) => chats.payload.id === chatId;
  
 export const getChats = (state) => state.chats;
 export const getChatList = (state) => getChats(state).chats;
