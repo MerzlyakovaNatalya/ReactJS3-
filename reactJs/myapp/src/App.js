@@ -1,8 +1,8 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
-import Profile from './routes/Profile';
-import Chats from './routes/chats/Chats';
+import { Profile } from './routes/Profile';
+import { Chats } from './routes/chats/Chats';
 import Header from './components/header/Header';
 
 

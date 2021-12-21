@@ -1,19 +1,26 @@
-import MessageList from './components/messageList/MessageList';
+import { MessagesList } from './components/messageList/MessageList';
 import ChatList from './components/chatList/ChatList';
-import { CHATS } from './../../helpers/mock';
 import { Routes, Route } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { withChats } from '../../hocs/withChats';
 
-const Chats = () => {
+export const ChatsRender = ({
+                          chats,
+                          onCreateChat,
+                          onDeleteChat
+                        }) => {
+
     return (
         <>
-        <ChatList list={CHATS}></ChatList>
+        <ChatList list={chats} onDelete={onDeleteChat}></ChatList>
+        <Button onClick={onCreateChat}>CreateChat</Button>
         <div className="message"> 
         <Routes>
-                 <Route path=":chatId" element={<MessageList/>} />
+                 <Route path=":chatId" element={<MessagesList/>} />
         </Routes>
         </div>
         </>
     )
 }
 
-export default Chats;
+export const Chats = withChats(ChatsRender);
