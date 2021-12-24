@@ -1,13 +1,41 @@
-import { useState, useEffect, useRef } from 'react';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import style from './MessageList.module.css';
-import { useParams } from 'react-router-dom';
-import { CHATS } from './../../../../helpers/mock';
+
 import { useNavigate } from "react-router-dom";
 import { HashRouter } from 'react-router-dom';
+import { withChatMessages } from '../../../../hocs/withChatMessages';
+import style from './MessageList.module.css';
+import { Form } from './form';
+import { useEffect } from "react";
 
-const MessageList = () => {
+export const MessagesRender = ({
+                            messageList,
+                            hasChat,
+                            onSubmitMessage,
+                              }) => {
+const navigate = useNavigate();
+
+useEffect(() => {
+if (!hasChat) {
+  return navigate('/chats');
+ }
+}, []) 
+                                
+    return (
+     <>  
+      <div className={style.messageList}>{messageList}
+           {/*{messageList.map((item, index)=>(
+              <p key={index}>{item.author} - {item.text}</p>
+            ))}*/}
+       </div>
+      <div>
+          <Form onSubmitMessage={onSubmitMessage}/>
+        </div>
+      </>
+         )
+          }
+                                
+     export const MessagesList = withChatMessages(MessagesRender);
+
+/*const MessageList = () => {
     const {chatId} = useParams();
     let navigate = useNavigate();
      
@@ -36,10 +64,6 @@ const MessageList = () => {
         resetForm();
     };
 
-    /*const onChangeMessageInput = (event) => {
-        setValue(event.target.value);  
-    };*/
-    
     useEffect(() => {
         if (messageList.length === 0) {
             return;
@@ -98,4 +122,4 @@ const MessageList = () => {
     )
 }
 
-export default MessageList;
+export default MessageList;*/
