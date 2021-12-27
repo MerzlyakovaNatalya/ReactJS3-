@@ -1,5 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { withChatMessages } from '../../../../hocs/withChatMessages';
 import style from './MessageList.module.css';
@@ -38,35 +39,36 @@ if (!hasChat) {
 /*const MessageList = () => {
     const {chatId} = useParams();
     let navigate = useNavigate();
+
+    const dispatch = useDispatch();
+    const messageList = useSelector(getChatMessagesById(chatId));
+    const hasChat = useSelector(hasChatById(chatId));
      
     const inputRef = useRef();
     
-    const [messageList, setMessageList] = useState([]);
-    const [value, setValue] = useState("");
+    //const [messageList, setMessageList] = useState([]);
+    //const [value, setValue] = useState("");
 
     const sendMessage = (author, text) => {
-        const newMessageList = [...messageList];
-        const newMessage = {
+        const newMessageList = {
             author,
             text
         };
-        newMessageList.push(newMessage);
-        setMessageList(newMessageList);
+        dispatch(createMessage(newMessageList, chatId ))
     };
 
-    const resetForm = () => {
-        setValue("");
-    };
+    //const resetForm = () => {
+    //    setValue("");
+    //};
 
-    const onSubmitMessage = (event) => {
-        event.preventDefault();
+    const onSubmitMessage = (value) => {
         sendMessage("user", value);
-        resetForm();
+        {/*resetForm();*/}
     };
 
     useEffect(() => {
-        if (messageList.length === 0) {
-            return;
+        if (!messageList || messageList.length === 0) {
+           return;
         }
 
         const tail = messageList[messageList.length - 1];
@@ -81,9 +83,14 @@ if (!hasChat) {
         inputRef.current.focus()
     });
 
-    if (!CHATS.find(({ id }) => id === chatId)) {
-        return navigate(-1);
-   }
+    {/*useEffect(() => {
+        if (!CHATS.find(({ id }) => id === chatId)) {
+      return navigate('/chats');}
+    })*/}
+
+    if (!hasChat) {
+        return navigate('/chats');
+    }
 
     return (
         <>  
@@ -96,7 +103,7 @@ if (!hasChat) {
             <form noValidate autoComplete="off" onSubmit={onSubmitMessage}>
             <TextField
               inputRef={inputRef}
-              onChange={(event) => setValue(event.target.value)}
+              onChange={(event) => event.target.value}
               label="Cообщение"
               variant="outlined"
               color="secondary"

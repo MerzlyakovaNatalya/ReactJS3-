@@ -1,21 +1,26 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { MessagesList } from './components/messageList/MessageList';
+import ChatList from './components/chatList/ChatList';
+import { Routes, Route } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { withChats } from '../../hocs/withChats';
 
-const ChatList = ({ list, onDelete }) => {
+export const ChatsRender = ({
+                          chats,
+                          onCreateChat,
+                          onDeleteChat
+                        }) => {
+
     return (
-    <>
-    <List sx={{ marginRight: 5 }}>
-      {list.map((item) => (
-       <ListItem key={item.id}>
-         <Link to={`/chats/${item.id}`}>{item.name}</Link>
-         <Button onClick={() => onDelete(item.id)} color="inherit">delete</Button>
-       </ListItem>
-      ))}
-    </List>
-    </>
-    );
-    };
-    
-    export default ChatList;
+        <>
+        <ChatList list={chats} onDelete={onDeleteChat}></ChatList>
+        <Button onClick={onCreateChat}>CreateChat</Button>
+        <div className="message"> 
+        <Routes>
+            <Route path=":chatId" element={<MessagesList/>} />
+        </Routes>
+        </div>
+        </>
+    )
+}
+
+export const Chats = withChats(ChatsRender);
