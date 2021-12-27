@@ -1,9 +1,10 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import Home from './routes/Home';
-import Profile from './routes/Profile';
-import Chats from './routes/chats/Chats';
+import { Profile } from './routes/Profile';
+import { Chats } from './routes/chats/Chats';
 import Header from './components/header/Header';
+import { Animals } from './routes/new/index';
 
 
 
@@ -16,6 +17,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="profile" element={<Profile/>} />
               <Route path="chats/*" element={<Chats/>} />
+              <Route path="new" element={<Animals/>} />
               <Route path="*" element={"NotFound"}/>
         </Routes>
         </div>

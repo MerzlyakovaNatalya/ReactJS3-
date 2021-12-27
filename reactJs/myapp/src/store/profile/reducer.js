@@ -17,4 +17,3 @@ export const profileReducer = (state = initialValues, action) => {
         }
     }
 }
-

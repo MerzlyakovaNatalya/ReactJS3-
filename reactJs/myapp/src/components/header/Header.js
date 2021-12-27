@@ -15,6 +15,9 @@ const Header = () => {
         <Button to="/chats" component={Link} color="inherit">
           Chats
         </Button>
+        <Button to="/new" component={Link} color="inherit">
+          New
+        </Button>
        </Toolbar>
      </AppBar>
    
