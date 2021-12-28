@@ -18,6 +18,12 @@ const Header = () => {
         <Button to="/new" component={Link} color="inherit">
           New
         </Button>
+        <Button to="/signup" component={Link} color="inherit">
+        Registration
+        </Button>
+        <Button to="/login" component={Link} color="inherit">
+        Login
+        </Button>
        </Toolbar>
      </AppBar>
    

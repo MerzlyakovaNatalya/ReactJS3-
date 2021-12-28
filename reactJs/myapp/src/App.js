@@ -5,7 +5,8 @@ import { Profile } from './routes/Profile';
 import { Chats } from './routes/chats/Chats';
 import Header from './components/header/Header';
 import { Animals } from './routes/new/index';
-
+import { Signup } from './components/signUp/SignUp';
+import { Login } from './components/login/login';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
               <Route path="profile" element={<Profile/>} />
               <Route path="chats/*" element={<Chats/>} />
               <Route path="new" element={<Animals/>} />
+              <Route path="signup" element={<Signup/>} />
+              <Route path="login" element={<Login/>} />
               <Route path="*" element={"NotFound"}/>
         </Routes>
         </div>

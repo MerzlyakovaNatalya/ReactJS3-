@@ -13,4 +13,14 @@ export const createChat = (name => ({
     id: nanoid(),
 }))
 
+export const mapChatSnapshotToChat = (snapshot) => ({
+    ...snapshot.val(),
+    id: snapshot.key,
+})
+
+export const mapMessageSnapshotToMessage = (snapshot) => ({
+    ...snapshot.val(),
+    id: snapshot.key,
+})
+
 export const newId = nanoid();
